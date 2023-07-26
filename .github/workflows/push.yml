@@ -10,7 +10,6 @@ jobs:
         with:
           node-version: '18.x'
       - run: yarn run --frozen-lockfile
-      - run: npx @nestjs/cli build --if-present
       - run: yarn run lint
   CD:
     needs: CI
