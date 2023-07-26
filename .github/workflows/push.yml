@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'run on every branch'
+      - run: echo 'on other branch'
   act-on-master:
     needs: act-on-every-branch
     if: github.ref == 'refs/heads/master'
