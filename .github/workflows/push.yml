@@ -1,14 +1,20 @@
 name: Github push action test
 on: [push]
 jobs:
-  act-on-every-branch:
+  CI:
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'run on every branch'
-      - run: echo 'on other branch'
-  act-on-master:
-    needs: act-on-every-branch
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: yarn run --frozen-lockfile
+      - run: yarn run build --if-present
+      - run: yarn run lint
+  CD:
+    needs: CI
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'run on master'
+      - run: echo 'Continuous Deployment!'
