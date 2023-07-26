@@ -9,7 +9,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
-      - run: yarn run build
+      - run: npx @nestjs/cli build
       - run: yarn run lint
   CD:
     needs: CI
