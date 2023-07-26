@@ -1,0 +1,13 @@
+name: Github push action test
+on: [push]
+jobs:
+  act-on-every-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'run on every branch'
+  act-on-master:
+    needs: act-on-every-branch
+    if: github.repository == 'gitaction-playground/master'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'run on master'
