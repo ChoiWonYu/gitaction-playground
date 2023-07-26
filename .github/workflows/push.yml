@@ -7,7 +7,7 @@ jobs:
       - run: echo 'run on every branch'
   act-on-master:
     needs: act-on-every-branch
-    if: github.repository == 'gitaction-playground/master'
+    if: github.ref == 'gitaction-playground/heads/master'
     runs-on: ubuntu-latest
     steps:
       - run: echo 'run on master'
